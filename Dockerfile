@@ -10,7 +10,8 @@ FROM dock0/arch
     && useradd -m red
    
   # needed by many tools
-  RUN pacman -S --needed --noconfirm base-devel
+  RUN pacman -S --needed --noconfirm base-devel \
+    && pacman -Scc --noconfirm
 
   COPY sudoers /etc/sudoers
   RUN chown root:root /etc/sudoers \
